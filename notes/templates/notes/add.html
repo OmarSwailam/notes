@@ -1,0 +1,25 @@
+{% extends "notes/layout.html" %} {% load crispy_forms_tags %} 
+{% block body %}
+
+<nav class="navbar bg-danger">
+    <div class="container-fluid">
+        <a class="navbar-brand m-3 text-light h1" href="{% url 'notes:index' %}">Notes</a>
+        <a class="nav-link" href="#">
+            <i class="bi bi-plus-circle-fill" style="font-size: 50px; color:white"></i>
+        </a>
+    </div>
+</nav>
+
+<form action="{% url 'notes:add' %}" method="post">
+  {% csrf_token %}
+
+  <div class="form-row">
+    <div class="m-3">
+        {{ form|crispy }}
+    </div>
+  </div>
+
+  <input type="submit" class="btn btn-danger ms-3" />
+</form>
+
+{% endblock %}
